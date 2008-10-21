@@ -3,4 +3,5 @@
 Raspbilly is an open source billing syetm for small IT companies, developed 
 with Ruby on Rails. 
 
-Currently we are just planning and writing documentations.
+Currently we are just planning and writing documents.
+
