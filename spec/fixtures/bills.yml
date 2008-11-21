@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  written_on: 2008-11-21
+  customer_name: MyString
+  subject: MyString
+  payment_condition: MyString
+  payment_due_date: 2008-11-21
+  bank: MyText
+  from: MyText
+  total_amount: 1
+  tax: 1
+  description: MyText
+
+two:
+  code: MyString
+  written_on: 2008-11-21
+  customer_name: MyString
+  subject: MyString
+  payment_condition: MyString
+  payment_due_date: 2008-11-21
+  bank: MyText
+  from: MyText
+  total_amount: 1
+  tax: 1
+  description: MyText
