@@ -1,3 +1,6 @@
+<% unless flash[:notice].blank? %>
+  <div><%= flash[:notice] %></div>
+<% end %>
 <% if @bills.empty? %>
   <p>表示できる請求書はありません。</p>
 <% else %>
@@ -10,7 +13,6 @@
       <th>件名</th>
       <th>請求日</th>
       <th>請求金額</th>
-      <th>作成日時</th>
       <th>更新日時</th>
       <th></th>
       <th></th>
@@ -22,10 +24,9 @@
         <td><%= h bill.subject %></td>
         <td><%= bill.written_on.to_formatted_s(:db) if bill.written_on %></td>
         <td><%= bill.total_amount %></td>
-        <td class="timestamp"><%= bill.created_at.to_formatted_s(:db) %></td>
         <td class="timestamp"><%= bill.updated_at.to_formatted_s(:db) %></td>
         <td><%= link_to "詳しくみる", bill_path(bill)%></td>
-        <td><%= link_to "削除", bill_path(bill), :method => :delete, :confirm => "#{h bill.customer_name}への請求書を削除します。よろしいですか？"%></td>
+        <td><%= link_to "削除", bill_path(bill), :method => :delete, :confirm => "#{h format_bill(bill)}への請求書を削除します。よろしいですか？"%></td>
       </tr>
     <% end  %>
   </table>
