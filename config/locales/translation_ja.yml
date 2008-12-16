@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    models:
+      bill: 請求書
+      bill_item/base: 明細
+      bill_item/out_of_pocket: 立替明細
+      bill_item/sale: 明細
+    attributes:
+      bill:
+        code: コード
+        written_on: 請求日
+        customer_name: 顧客名
+        subject: 件名
+        payment_condition: 支払条件
+        payment_due_date: 支払期限
+        bank: 入金先
+        from: 請求元
+        total_amount: 請求金額
+        tax: 消費税
+        description: 備考
+      bill_item/base:
+        amount: 金額
+        name: 摘要
+        taxed: 消費税の有無
+        description: 備考
+      bill_item/out_of_pocket:
+        amount: 金額
+        name: 摘要
+        taxed: 消費税の有無
+        description: 備考
+      bill_item/sale:
+        amount: 金額
+        name: 摘要
+        taxed: 消費税の有無
+        description: 備考
+
