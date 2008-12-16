@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag "application" %>
+    <%= yield :head %>
+    <% unless @title.blank? -%>
+      <title>Raspbilly - <%= @title %></title>
+    <% end -%>
+  </head>
+  <body>
+    <div id="page">
+      <div id="header">
+        <div class="logo item">Raspbilly</div>
+        <div class="item"><%= link_to "請求書", bills_path %></div>
+        <div style="clear:right;"></div>
+      </div>
+      <div id="menus">
+        <h2>請求書</h2>
+        <ul>
+          <li><%= link_to "一覧", bills_path %></li>
+          <li><%= link_to "新規作成", bills_path, :method => :post %></li>
+        </ul>
+      </div>
+      <div id="main">
+        <% unless @title.blank? -%>
+        <h1><%= @title %></h1>
+        <% end -%>
+        <div class="body">
+        <%= yield %>
+        </div>
+      </div>
+      <div style="clear:left;"></div>
+      <div id="footer">
+        Copyright 2008 Project Raspbilly All rights reserved.
+      </div>
+   </div>
+  </body>
+</html>
