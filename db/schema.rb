@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081121115018) do
+ActiveRecord::Schema.define(:version => 20081216041543) do
+
+  create_table "bill_items", :force => true do |t|
+    t.integer  "bill_id"
+    t.integer  "parent_id"
+    t.string   "type"
+    t.integer  "amount"
+    t.string   "name"
+    t.boolean  "taxed"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bills", :force => true do |t|
     t.string   "code"

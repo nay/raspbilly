@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bill_id: 1
+  parent_id: 1
+  type: MyString
+  amount: 1
+  name: MyString
+  taxed: false
+  description: MyText
+
+two:
+  bill_id: 1
+  parent_id: 1
+  type: MyString
+  amount: 1
+  name: MyString
+  taxed: false
+  description: MyText
