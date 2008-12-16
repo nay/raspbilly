@@ -5,6 +5,7 @@ development:
   database: raspbilly_dev
   username: root
   password:
+  encoding: utf8
   socket: /opt/local/var/run/mysql5/mysqld.sock
 
 test:
@@ -12,6 +13,7 @@ test:
   database: raspbilly_test
   username: root
   password:
+  encoding: utf8
   socket: /opt/local/var/run/mysql5/mysqld.sock
 
 production:
@@ -19,4 +21,5 @@ production:
   database: raspbilly_production
   username: root
   password:
+  encoding: utf8
   socket: /opt/local/var/run/mysql5/mysqld.sock

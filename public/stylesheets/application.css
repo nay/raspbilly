@@ -25,12 +25,23 @@ div#main {
 #main .body {
     padding: 8px;
 }
+#main .body td {
+    background-color: #f0fffa;
+    padding: 4px;
+}
+#main .body th {
+    background-color: #e0ffe8;
+    padding: 4px;
+}
 #main h1 {
     background-color: #ffc0cb;
     padding: 4px;
     font-size: 130%;
     color: #dc143c;
     margin: 0;
+}
+.timestamp {
+    font-size: small;
 }
 div#menus {
     margin-right:20px;
@@ -63,4 +74,7 @@ div#footer {
 }
 h1 {
     margin: 0;
+}
+.pagination {
+    text-align: center;
 }

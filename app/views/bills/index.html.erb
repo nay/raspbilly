@@ -1,5 +1,33 @@
-<% if @bills.empty? -%>
+<% if @bills.empty? %>
   <p>表示できる請求書はありません。</p>
-<% else -%>
-
+<% else %>
+  <p><%= @bills.total_entries %>件の請求書があります。</p>
+  <%= will_paginate @bills %>
+  <table>
+    <tr>
+      <th>コード</th>
+      <th>顧客名</th>
+      <th>件名</th>
+      <th>請求日</th>
+      <th>請求金額</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% for bill in @bills %>
+      <tr>
+        <td><%= h bill.code %></td>
+        <td><%= h bill.customer_name %></td>
+        <td><%= h bill.subject %></td>
+        <td><%= bill.written_on.to_formatted_s(:db) if bill.written_on %></td>
+        <td><%= bill.total_amount %></td>
+        <td class="timestamp"><%= bill.created_at.to_formatted_s(:db) %></td>
+        <td class="timestamp"><%= bill.updated_at.to_formatted_s(:db) %></td>
+        <td><%= link_to "詳しくみる", bill_path(bill)%></td>
+        <td><%= link_to "削除", bill_path(bill), :method => :delete, :confirm => "#{h bill.customer_name}への請求書を削除します。よろしいですか？"%></td>
+      </tr>
+    <% end  %>
+  </table>
+  <%= will_paginate @bills %>
 <% end %>
