@@ -16,6 +16,7 @@
       <th>更新日時</th>
       <th></th>
       <th></th>
+	  <th></th>
     </tr>
     <% for bill in @bills %>
       <tr>
@@ -25,10 +26,12 @@
         <td><%= bill.written_on.to_formatted_s(:db) if bill.written_on %></td>
         <td><%= bill.total_amount %></td>
         <td class="timestamp"><%= bill.updated_at.to_formatted_s(:db) %></td>
-        <td><%= link_to "詳しくみる", bill_path(bill)%></td>
+        <td><%= link_to "詳しくみる", bill_path(bill),:method => :get %></td>
+		<td><%= link_to "編集する", edit_bill_path(bill), :method => :get %></td>
         <td><%= link_to "削除", bill_path(bill), :method => :delete, :confirm => "#{h format_bill(bill)}への請求書を削除します。よろしいですか？"%></td>
       </tr>
     <% end  %>
   </table>
   <%= will_paginate @bills %>
 <% end %>
+

@@ -22,6 +22,13 @@ class BillsController < ApplicationController
   end
 
   def update
+    if @bill.update_attributes(params[:bill])
+      flash[:notice] = "#{format_bill(@bill)}は正常に更新されました"
+      redirect_to bills_path
+    else
+      p @bill.inspect
+      render :action => 'edit'
+    end
   end
 
   def edit
