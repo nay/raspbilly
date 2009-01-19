@@ -19,7 +19,7 @@ div#header .item {
 div#main {
     float:left;
     background-color: white;
-    width: 1000px;
+    width: 800px;
     border-bottom: 10px solid green;
 }
 #main .body {
