@@ -1,0 +1,5 @@
+xml.instruct!
+xml.test do
+  xml.contents do
+  end
+end
