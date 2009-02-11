@@ -2,11 +2,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe "/bills/edit" do
   before(:each) do
-    render 'bills/edit'
+    @bill = Bill.new(:customer_name => "test")
+    @bill.save!
   end
-  
-  #Delete this example and add some real ones or delete this file
-  it "should tell you where to find the file" do
-    response.should have_tag('p', %r[Find me in app/views/bills/edit])
+
+  it "成功する" do
+    assigns[:bill] = @bill
+    render 'bills/edit'
+    response.should be_success
   end
 end

@@ -2,9 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BillsController do
 
-  #Delete these examples and add some real ones
-  it "should use BillsController" do
-    controller.should be_an_instance_of(BillsController)
+  before do
+    @bill = Bill.new(:customer_name => "test")
+    @bill.save!
   end
 
 
@@ -29,24 +29,26 @@ describe BillsController do
     end
   end
 
-  describe "GET 'update'" do
-    it "should be successful" do
-      get 'update'
-      response.should be_success
+  describe "PUT 'update'" do
+    it "成功する" do
+      post 'update', :id => @bill.id, :_method => "put", :bill => {:customer_name => "changed"}
+      response.should redirect_to(bills_path)
+      @bill.reload
+      @bill.customer_name.should == "changed"
     end
   end
 
   describe "GET 'edit'" do
-    it "should be successful" do
-      get 'edit'
+    it "成功する" do
+      get 'edit', :id => @bill.id
       response.should be_success
     end
   end
 
-  describe "GET 'destroy'" do
-    it "should be successful" do
-      get 'destroy'
-      response.should be_success
+  describe "DELETE 'destroy'" do
+    it "成功する" do
+      post 'destroy', :id => @bill.id, :_method => "delete"
+      response.should redirect_to(bills_path)
     end
   end
 end
