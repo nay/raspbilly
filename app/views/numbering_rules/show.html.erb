@@ -8,6 +8,11 @@
   <%=h @numbering_rule.current_number %>
 </p>
 
+<p>
+  <b>Numbering reset type:</b>
+  <%=h @numbering_rule.numbering_reset_type_id %>
+</p>
+
 
 <%= link_to 'Edit', edit_numbering_rule_path(@numbering_rule) %> |
 <%= link_to 'Back', numbering_rules_path %>
