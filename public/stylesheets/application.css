@@ -79,3 +79,25 @@ h1 {
 .pagination {
     text-align: center;
 }
+label.required {
+    color: #DC143C;
+}
+.formGroup {
+    border: 1px solid #aaaaaa;
+    padding: 4px;
+    margin: 4px 0 4px 0;
+}
+.formGroup h2 {
+    margin: 0;
+    font-size: 120%;
+    border-left: 10px solid #b7e29d;
+    color: #65ab31;
+    padding-left: 8px;
+}
+.inlineField {
+    float: left;
+    width: 350px;
+}
+.clearInlineField {
+    clear: left;
+}
