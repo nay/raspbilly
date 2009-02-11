@@ -8,6 +8,8 @@ class BillsController < ApplicationController
 
   def new
     @bill = Bill.new
+    3.times {@bill.sale_items.build}
+    1.times {@bill.out_of_pocket_items.build}
   end
 
   def create

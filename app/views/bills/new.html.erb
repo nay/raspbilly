@@ -1,15 +1,2 @@
-<%= error_messages_for :bill %>
-<% form_for @bill do |f| %>
-  <div><label for="bill_code">コード:</label></div><div><%= f.text_field :code %></div>
-  <div><label for="bill_written_on">請求日:</label></div><div><%= f.date_select :written_on, :use_month_numbers => true, :include_blank => true %></div>
-  <div><label for="bill_customer_name">顧客名:</label></div><div><%= f.text_field :customer_name %></div>
-  <div><label for="bill_subject">件名:</label></div><div><%= f.text_field :subject %></div>
-  <div><label for="bill_payment_condition">支払条件:</label></div><div><%= f.text_field :payment_condition %></div>
-  <div><label for="bill_payment_due_date">支払期限:</label></div><div><%= f.date_select :payment_due_date, :use_month_numbers => true, :include_blank => true %></div>
-  <div><label for="bill_bank">入金先:</label></div><div><%= f.text_area :bank, :rows => 4 %></div>
-  <div><label for="bill_from">請求元情報:</label></div><div><%= f.text_area :from, :rows => 4 %></div>
-  <div><label for="bill_description">備考:</label></div><div><%= f.text_area :description, :rows => 4 %></div>
-  <div>請求金額: TODO </div>
-  <div>内、消費税額: TODO </div>
-  <%= f.submit "登録" %>
-<% end %>
+<h1>新しい請求書の作成</h1>
+<%= render :partial => "form" %>
