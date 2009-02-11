@@ -1,0 +1,20 @@
+<h1>Editing numbering_rule</h1>
+
+<% form_for(@numbering_rule) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :numbering_format %><br />
+    <%= f.text_field :numbering_format %>
+  </p>
+  <p>
+    <%= f.label :current_number %><br />
+    <%= f.text_field :current_number %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @numbering_rule %> |
+<%= link_to 'Back', numbering_rules_path %>

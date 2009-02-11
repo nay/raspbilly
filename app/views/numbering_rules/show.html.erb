@@ -1,0 +1,13 @@
+<p>
+  <b>Numbering format:</b>
+  <%=h @numbering_rule.numbering_format %>
+</p>
+
+<p>
+  <b>Current number:</b>
+  <%=h @numbering_rule.current_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_numbering_rule_path(@numbering_rule) %> |
+<%= link_to 'Back', numbering_rules_path %>
