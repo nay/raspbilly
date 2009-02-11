@@ -35,6 +35,8 @@ class BillsController < ApplicationController
   end
 
   def edit
+    add_default_sale_items
+    add_default_out_of_pocket_items
   end
 
   def destroy
@@ -45,7 +47,7 @@ class BillsController < ApplicationController
 
   def add_sale_item_field
     @bill = params[:id] ? Bill.find(params[:id]) : Bill.new
-    current_size = params[:bill][:sale_items_attributes].keys.size
+    current_size = params[:bill] && params[:bill][:sale_items_attributes] ? params[:bill][:sale_items_attributes].keys.size : 0
     @bill.attributes = params[:bill]
     @bill.sale_items.build while @bill.sale_items.size < current_size + 1
     add_default_out_of_pocket_items
@@ -54,7 +56,7 @@ class BillsController < ApplicationController
 
   def add_out_of_pocket_item_field
     @bill = params[:id] ? Bill.find(params[:id]) : Bill.new
-    current_size = params[:bill][:out_of_pocket_items_attributes].keys.size
+    current_size = params[:bill] && params[:bill][:out_of_pocket_items_attributes] ? params[:bill][:out_of_pocket_items_attributes].keys.size : 0
     @bill.attributes = params[:bill]
     @bill.out_of_pocket_items.build while @bill.out_of_pocket_items.size < current_size + 1
     add_default_sale_items

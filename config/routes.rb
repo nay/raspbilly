@@ -34,10 +34,10 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
 
-  map.new_bill_sale_items "bills/new/sale_items", :conditions => {:method => :post}, :controller => "bills", :action => "add_sale_item_field"
-  map.bill_sale_items "bills/:id/sale_items", :conditions => {:method => :post}, :controller => "bills", :action => "add_sale_item_field"
-  map.new_bill_out_of_pocket_items "bills/new/out_of_pocket_items", :conditions => {:method => :post}, :controller => "bills", :action => "add_out_of_pocket_item_field"
-  map.bill_out_of_pocket_items "bills/:id/out_of_pocket_items", :conditions => {:method => :post}, :controller => "bills", :action => "add_out_of_pocket_item_field"
+  map.new_bill_sale_items "bills/new/sale_items", :controller => "bills", :action => "add_sale_item_field"
+  map.bill_sale_items "bills/:id/sale_items", :controller => "bills", :action => "add_sale_item_field"
+  map.new_bill_out_of_pocket_items "bills/new/out_of_pocket_items", :controller => "bills", :action => "add_out_of_pocket_item_field"
+  map.bill_out_of_pocket_items "bills/:id/out_of_pocket_items", :controller => "bills", :action => "add_out_of_pocket_item_field"
   map.resources :bills
   
 

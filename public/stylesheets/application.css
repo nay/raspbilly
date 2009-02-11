@@ -107,3 +107,6 @@ div.fieldWithErrors {
 .clearInlineField {
     clear: left;
 }
+input.amountField {
+    text-align: right;
+}

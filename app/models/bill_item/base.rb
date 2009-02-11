@@ -3,6 +3,7 @@ class BillItem::Base < ActiveRecord::Base
   belongs_to :bill
 
   attr_protected :bill_id, :parent_id
+  attr_accessor :formatted_amount
 
   before_save :avoid_saving_abstract
 
