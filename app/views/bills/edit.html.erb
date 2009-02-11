@@ -1,6 +1,8 @@
 <h1><%= format_bill(@bill)%>の編集</h1>
 
+<div id="form_area">
 <%= render :partial => "form" %>
+</div>
 
   <%= link_to "更新しないで表示", @bill %>
   <%= link_to "一覧に戻る", bills_path,:method => :get %>

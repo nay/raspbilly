@@ -1,0 +1,12 @@
+    <h2>販売の明細</h2>
+    <% f.fields_for :sale_items do |i| %>
+      <div>
+        <%= i.label :name, '摘要' %>
+        <%= i.text_field :name %>
+        <%= i.label :amount, '金額' %>
+        <%= i.text_field :amount, :size => 10 %>
+        <%= i.label :description, '備考' %>
+        <%= i.text_field :description %>
+      </div>
+    <% end %>
+    <%= link_to_remote "欄を追加" , :url => @bill.new_record? ? new_bill_sale_items_path : bill_sale_items_path, :method => :post, :update => "sale_items", :submit => @bill.new_record? ? "new_bill" : "edit_bill" %>

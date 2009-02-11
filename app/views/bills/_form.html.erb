@@ -34,6 +34,7 @@
         <%= i.text_field :description %>
       </div>
     <% end %>
+    <%= link_to_remote "欄を追加", :update => "form_area", :submit => @bill.new_record? ?  "new_bill" : "edit_bill", :url => @bill.new_record? ? new_bill_sale_items_path : bill_sale_items_path(:id => @bill.id) %>
   </div>
   <div class="formGroup">
     <h2>立替金の明細</h2>
@@ -47,6 +48,7 @@
         <%= i.text_field :description %>
       </div>
     <% end %>
+    <%= link_to_remote "欄を追加", :update => "form_area", :submit => @bill.new_record? ?  "new_bill" : "edit_bill", :url => @bill.new_record? ? new_bill_out_of_pocket_items_path : bill_out_of_pocket_items_path(:id => @bill.id) %>
   </div>
   <div>請求金額: TODO </div>
   <div>内、消費税額: TODO </div>

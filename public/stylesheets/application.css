@@ -94,6 +94,12 @@ label.required {
     color: #65ab31;
     padding-left: 8px;
 }
+div.fieldWithErrors {
+    display: inline;
+}
+.fieldWithErrors input {
+    background-color: #ffff88
+}
 .inlineField {
     float: left;
     width: 350px;
