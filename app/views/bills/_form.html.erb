@@ -1,18 +1,28 @@
 <%= error_messages_for :bill %>
 <% form_for @bill do |f| %>
-  <div><label for="bill_code">コード:</label></div><div><%= f.text_field :code %></div>
-  <div><label for="bill_written_on">請求日:</label></div><div><%= f.date_select :written_on, :use_month_numbers => true, :include_blank => true %></div>
-  <div><label for="bill_customer_name">顧客名:</label></div><div><%= f.text_field :customer_name %></div>
-  <div><label for="bill_subject">件名:</label></div><div><%= f.text_field :subject %></div>
-  <div><label for="bill_payment_condition">支払条件:</label></div><div><%= f.text_field :payment_condition %></div>
-  <div><label for="bill_payment_due_date">支払期限:</label></div><div><%= f.date_select :payment_due_date, :use_month_numbers => true, :include_blank => true %></div>
-  <div><label for="bill_bank">入金先:</label></div><div><%= f.text_area :bank, :rows => 4 %></div>
-  <div><label for="bill_from">請求元情報:</label></div><div><%= f.text_area :from, :rows => 4 %></div>
-  <div><label for="bill_description">備考:</label></div><div><%= f.text_area :description, :rows => 4 %></div>
-  <div>請求金額: TODO </div>
-  <div>内、消費税額: TODO </div>
-
-  <div>
+  <div class="formGroup">
+    <h2>概要情報</h2>
+    <div>
+      <div class="inlineField"><%= f.label :code, "コード" %> : <%= f.text_field :code %></div>
+      <div class="inlineField"><%= f.label :written_on, "請求日" %> : <%= f.date_select :written_on, :use_month_numbers => true, :include_blank => true %></div>
+      <div class="clearInlineField"></div>
+    </div>
+    <div>
+      <div class="inlineField"><%= f.label :customer_name, "顧客名*", :class => "required" %> : <%= f.text_field :customer_name %></div>
+      <div class="inlineField"><%= f.label :subject, "件名" %> : <%= f.text_field :subject %></div>
+      <div class="clearInlineField"></div>
+    </div>
+    <div>
+      <div class="inlineField"><%= f.label :payment_condition, "支払条件" %> : <%= f.text_field :payment_condition %></div>
+      <div class="inlineField"><%= f.label :payment_due_date, "支払期限" %> : <%= f.date_select :payment_due_date, :use_month_numbers => true, :include_blank => true %></div>
+      <div class="clearInlineField"></div>
+    </div>
+    <div class="inlineField"><div><label for="bill_bank">入金先:</label></div><div><%= f.text_area :bank, :rows => 4 %></div></div>
+    <div class="inlineField"><div><label for="bill_from">請求元情報:</label></div><div><%= f.text_area :from, :rows => 4 %></div></div>
+    <div class="clearInlineField"></div>
+    <div><label for="bill_description">備考:</label></div><div><%= f.text_area :description, :rows => 4 %></div>
+  </div>
+  <div class="formGroup">
     <h2>販売の明細</h2>
     <% f.fields_for :sale_items do |i| %>
       <div>
@@ -24,6 +34,8 @@
         <%= i.text_field :description %>
       </div>
     <% end %>
+  </div>
+  <div class="formGroup">
     <h2>立替金の明細</h2>
     <% f.fields_for :out_of_pocket_items do |i| %>
       <div>
@@ -36,6 +48,8 @@
       </div>
     <% end %>
   </div>
+  <div>請求金額: TODO </div>
+  <div>内、消費税額: TODO </div>
 
   <%= f.submit @bill.new_record? ? "登録" : "更新" %>
 <% end %>
