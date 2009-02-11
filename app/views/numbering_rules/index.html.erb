@@ -1,0 +1,22 @@
+<h1>Listing numbering_rules</h1>
+
+<table>
+  <tr>
+    <th>Numbering format</th>
+    <th>Current number</th>
+  </tr>
+
+<% for numbering_rule in @numbering_rules %>
+  <tr>
+    <td><%=h numbering_rule.numbering_format %></td>
+    <td><%=h numbering_rule.current_number %></td>
+    <td><%= link_to 'Show', numbering_rule %></td>
+    <td><%= link_to 'Edit', edit_numbering_rule_path(numbering_rule) %></td>
+    <td><%= link_to 'Destroy', numbering_rule, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New numbering_rule', new_numbering_rule_path %>
