@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :numbering_reset_types
+
   map.resources :numbering_rules
 
   # The priority is based upon order of creation: first created -> highest priority.

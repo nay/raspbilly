@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090211033523) do
+ActiveRecord::Schema.define(:version => 20090211045105) do
 
   create_table "bill_items", :force => true do |t|
     t.integer  "bill_id"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(:version => 20090211033523) do
     t.integer  "total_amount"
     t.integer  "tax"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "numbering_reset_types", :force => true do |t|
+    t.string   "name"
+    t.text     "script"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

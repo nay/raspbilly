@@ -1,0 +1,22 @@
+<h1>Listing numbering_reset_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Script</th>
+  </tr>
+
+<% for numbering_reset_type in @numbering_reset_types %>
+  <tr>
+    <td><%=h numbering_reset_type.name %></td>
+    <td><%=h numbering_reset_type.script %></td>
+    <td><%= link_to 'Show', numbering_reset_type %></td>
+    <td><%= link_to 'Edit', edit_numbering_reset_type_path(numbering_reset_type) %></td>
+    <td><%= link_to 'Destroy', numbering_reset_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New numbering_reset_type', new_numbering_reset_type_path %>
