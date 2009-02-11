@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  numbering_format: MyString
+  current_number: 1
+  numbering_reset_type_id: 1
+
+two:
+  numbering_format: MyString
+  current_number: 1
+  numbering_reset_type_id: 1
