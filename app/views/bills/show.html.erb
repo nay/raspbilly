@@ -34,7 +34,7 @@
     <% @bill.sale_items.each do |i| %>
       <tr>
         <td><%= i.name %></td>
-        <td><%= i.amount %></td>
+        <td><%= number_with_delimiter(i.amount) %></td>
         <td><%= i.description %></td>
       </tr>
     <% end %>
@@ -50,7 +50,7 @@
     <% @bill.out_of_pocket_items.each do |i| %>
       <tr>
         <td><%= i.name %></td>
-        <td><%= i.amount %></td>
+        <td><%= number_with_delimiter i.amount %></td>
         <td><%= i.description %></td>
       </tr>
     <% end %>
@@ -59,7 +59,6 @@
 
 <div>請求金額: TODO </div>
 <div>内、消費税額: TODO </div>
-
 
 
 <%= link_to "編集する", bill_path(@bill), :method => :put %>
