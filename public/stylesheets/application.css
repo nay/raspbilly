@@ -22,16 +22,14 @@ div#main {
     width: 800px;
     border-bottom: 10px solid green;
 }
-#main .body {
+#main.body {
     padding: 8px;
 }
 #main .body td {
     background-color: #f0fffa;
-    padding: 4px;
 }
 #main .body th {
     background-color: #e0ffe8;
-    padding: 4px;
 }
 #main h1 {
     background-color: #ffc0cb;

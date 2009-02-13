@@ -1,3 +1,9 @@
+<link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid.css"> 
+<link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid_skins.css">
+<script type="text/javascript" src="components/dhtmlGrid/codebase/dhtmlxcommon.js"></script>
+<script type="text/javascript" src="components/dhtmlGrid/codebase/dhtmlxgrid.js"></script>
+<script type="text/javascript" src="components/dhtmlGrid/codebase/dhtmlxgridcell.js"></script>
+<script type="text/javascript" src="components/dhtmlGrid/codebase/excells/dhtmlxgrid_excell_link.js"></script>
 <% unless flash[:notice].blank? %>
   <div><%= flash[:notice] %></div>
 <% end %>
@@ -6,6 +12,7 @@
 <% else %>
   <p><%= @bills.total_entries %>件の請求書があります。</p>
   <%= will_paginate @bills %>
+  <% if false -%>
   <table>
     <tr>
       <th>コード</th>
@@ -18,7 +25,7 @@
       <th></th>
 	  <th></th>
     </tr>
-    <% for bill in @bills %>
+    <% for bill in @bills -%>
       <tr>
         <td><%= h bill.code %></td>
         <td><%= h bill.customer_name %></td>
@@ -27,11 +34,20 @@
         <td><%= bill.total_amount %></td>
         <td class="timestamp"><%= bill.updated_at.to_formatted_s(:db) %></td>
         <td><%= link_to "詳しくみる", bill_path(bill),:method => :get %></td>
-		<td><%= link_to "編集する", edit_bill_path(bill), :method => :get %></td>
+        <td><%= link_to "編集する", edit_bill_path(bill), :method => :get %></td>
         <td><%= link_to "削除", bill_path(bill), :method => :delete, :confirm => "#{h format_bill(bill)}への請求書を削除します。よろしいですか？"%></td>
       </tr>
-    <% end  %>
+    <% end -%>
   </table>
+  <% end -%>
+  <div id="gridbox" width="550px" height="400px" style="background-color:white;"></div>
   <%= will_paginate @bills %>
 <% end %>
-
+<script type="text/javascript">
+	grid = new dhtmlXGridObject('gridbox');
+	grid.selMultiRows = false;
+	grid.setImagePath("components/dhtmlGrid/codebase/imgs/");
+	grid.setMultiLine(false);
+	grid.init();
+	grid.loadXML('<%=url_for params.update(:format => :xml) %>');
+</script>
