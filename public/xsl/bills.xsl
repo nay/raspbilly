@@ -21,7 +21,7 @@
   <xsl:template match="bill">
   <xsl:element name="row">
     <xsl:attribute name="id"><xsl:value-of select="id/text()"/></xsl:attribute>
-    <cell><xsl:value-of select="code/text()"/>^/bills/<xsl:value-of select="id/text()"/>/edit</cell>
+    <cell><xsl:value-of select="code/text()"/>^/bills/<xsl:value-of select="id/text()"/>^_self</cell>
     <cell><xsl:value-of select="customer-name/text()"/></cell>
     <cell><xsl:value-of select="subject/text()"/></cell>
     <cell><xsl:value-of select="written-on/text()"/></cell>
