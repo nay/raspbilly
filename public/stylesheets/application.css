@@ -85,7 +85,7 @@ label.required {
     padding: 4px;
     margin: 4px 0 4px 0;
 }
-.formGroup h2 {
+h2 {
     margin: 0;
     font-size: 120%;
     border-left: 10px solid #b7e29d;
@@ -107,4 +107,21 @@ div.fieldWithErrors {
 }
 input.amountField {
     text-align: right;
+}
+/* show */
+td.itemName {
+    width: 100px;
+}
+td.amount {
+    width: 100px;
+    text-align: right;
+}
+td.itemDescription {
+    width: 300px;
+}
+div.showArea {
+    padding: 4px;
+}
+.showArea h2 {
+    margin: 8px 0 4px 0;
 }

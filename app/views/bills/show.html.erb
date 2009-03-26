@@ -1,6 +1,7 @@
 <h1><%= format_bill(@bill)%>の詳細</h1>
 
-<div class="formGroup">
+<div class="showArea">
+<div>
   <h2>概要情報</h2>
   <div>
     <div class="inlineField">コード: <%=h @bill.code %></div>
@@ -25,36 +26,40 @@
   <div>備考: <%=h @billdescription %></div>
 </div>
 
-<div class="formGroup">
+<div>
   <h2>販売の明細</h2>
+  <% unless @bill.sale_items.empty? %>
   <table>
     <tr>
-      <th>適用</th><th>金額</th><th>備考</th>
+      <th>摘要</th><th>金額</th><th>備考</th>
     </tr>
     <% @bill.sale_items.each do |i| %>
       <tr>
-        <td><%= i.name %></td>
-        <td><%= number_with_delimiter(i.amount) %></td>
-        <td><%= i.description %></td>
+        <td class="itemName"><%= i.name %></td>
+        <td class="amount"><%= number_with_delimiter(i.amount) %></td>
+        <td class="itemDescription"><%= i.description %></td>
       </tr>
     <% end %>
   </table>
+  <% end %>
 </div>
 
-<div class="formGroup">
+<div>
+  <% unless @bill.out_of_pocket_items.empty? %>
   <h2>立替金の明細</h2>
   <table>
     <tr>
-      <th>適用</th><th>金額</th><th>備考</th>
+      <th>摘要</th><th>金額</th><th>備考</th>
     </tr>
     <% @bill.out_of_pocket_items.each do |i| %>
       <tr>
-        <td><%= i.name %></td>
-        <td><%= number_with_delimiter i.amount %></td>
-        <td><%= i.description %></td>
+        <td class="itemName"><%= i.name %></td>
+        <td class="amount"><%= number_with_delimiter i.amount %></td>
+        <td class="itemDescription"><%= i.description %></td>
       </tr>
     <% end %>
   </table>
+  <% end %>
 </div>
 
 <div>請求金額: TODO </div>
@@ -63,3 +68,4 @@
 
 <%= link_to "編集する", bill_path(@bill), :method => :put %>
 <%= link_to "一覧に戻る", bills_path,:method => :get %>
+</div>
