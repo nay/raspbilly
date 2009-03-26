@@ -1,0 +1,1 @@
+USE_DHTML_X_GRID = true

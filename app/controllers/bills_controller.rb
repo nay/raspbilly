@@ -1,7 +1,9 @@
+if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID
 require 'libxml'
 require 'libxslt'
 include LibXML
 include LibXSLT
+end
 
 class BillsController < ApplicationController
   before_filter :find_bill, :only => [:show, :edit, :update, :destroy]

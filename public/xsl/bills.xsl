@@ -9,7 +9,7 @@
       <head>
         <column width="80" type="link" align="left" sort="str">コード</column>
         <column width="80" type="ed" align="left" sort="str">顧客名</column>
-        <column width="80" type="ed" align="left" sort="str">件名</column>
+        <column width="200" type="ed" align="left" sort="str">件名</column>
         <column width="80" type="ed" align="center" sort="date">請求日</column>
         <column width="80" type="price" align="right" sort="int">請求額</column>
         <column width="150" type="ro" align="center" sort="str">更新日</column>

@@ -1,10 +1,13 @@
+<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
 <link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid.css"> 
 <link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid_skins.css">
-<script type="text/javascript" src="components/dhtmlGrid/codebase/dhtmlxcommon.js"></script>
-<script type="text/javascript" src="components/dhtmlGrid/codebase/dhtmlxgrid.js"></script>
-<script type="text/javascript" src="components/dhtmlGrid/codebase/dhtmlxgridcell.js"></script>
-<script type="text/javascript" src="components/dhtmlGrid/codebase/excells/dhtmlxgrid_excell_link.js"></script>
-<% unless flash[:notice].blank? %>
+<%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxcommon.js" %>
+<%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxgrid.js" %>
+<%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxgridcell.js" %>
+<%= javascript_include_tag "/components/dhtmlGrid/codebase/excells/dhtmlxgrid_excell_link.js" %>
+<% end %>
+
+  <% unless flash[:notice].blank? %>
   <div><%= flash[:notice] %></div>
 <% end %>
 <% if @bills.empty? %>
@@ -12,7 +15,7 @@
 <% else %>
   <p><%= @bills.total_entries %>件の請求書があります。</p>
   <%= will_paginate @bills %>
-  <% if false -%>
+  <% unless defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID -%>
   <table>
     <tr>
       <th>コード</th>
@@ -40,14 +43,18 @@
     <% end -%>
   </table>
   <% end -%>
-  <div id="gridbox" width="550px" height="400px" style="background-color:white;"></div>
+  <% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
+  <div id="gridbox" width="700px" height="400px" style="background-color:white;"></div>
+  <% end %>
   <%= will_paginate @bills %>
 <% end %>
+<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
 <script type="text/javascript">
 	grid = new dhtmlXGridObject('gridbox');
 	grid.selMultiRows = false;
-	grid.setImagePath("components/dhtmlGrid/codebase/imgs/");
+	grid.setImagePath("/components/dhtmlGrid/codebase/imgs/");
 	grid.setMultiLine(false);
 	grid.init();
 	grid.loadXML('<%=url_for params.update(:format => :xml) %>');
 </script>
+<% end %>
