@@ -62,9 +62,12 @@
   <% end %>
 </div>
 
-<div>請求金額: TODO </div>
-<div>内、消費税額: TODO </div>
-
+<div id="total">
+<table>
+  <tr><th>請求金額</th><td class="amount"><%= @bill.total_amount %></td></tr>
+  <tr><th>内、消費税額</th><td class="amount"></td></tr>
+</table>
+</div>
 
 <%= link_to "編集する", bill_path(@bill), :method => :put %>
 <%= link_to "一覧に戻る", bills_path,:method => :get %>
