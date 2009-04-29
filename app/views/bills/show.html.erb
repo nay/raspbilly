@@ -29,7 +29,7 @@
 <div>
   <h2>販売の明細</h2>
   <% unless @bill.sale_items.empty? %>
-  <table>
+  <table class="book">
     <tr>
       <th>摘要</th><th>金額</th><th>備考</th>
     </tr>
@@ -47,7 +47,7 @@
 <div>
   <% unless @bill.out_of_pocket_items.empty? %>
   <h2>立替金の明細</h2>
-  <table>
+  <table class="book">
     <tr>
       <th>摘要</th><th>金額</th><th>備考</th>
     </tr>
@@ -63,12 +63,15 @@
 </div>
 
 <div id="total">
-<table>
+<table class="book">
   <tr><th>請求金額</th><td class="amount"><%= @bill.total_amount %></td></tr>
   <tr><th>内、消費税額</th><td class="amount"></td></tr>
 </table>
 </div>
 
-<%= link_to "編集する", bill_path(@bill), :method => :put %>
-<%= link_to "一覧に戻る", bills_path,:method => :get %>
+<div class="operation">
+  <ul class="operationButtons">
+    <li class="button"><%= link_to "編集する", bill_path(@bill), :method => :put, :class => "button" %></li>
+    <li class="button"><%= link_to "一覧に戻る", bills_path,:method => :get, :class => "button" %></li>
+  </ul>
 </div>

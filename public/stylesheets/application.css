@@ -25,12 +25,6 @@ div#main {
 #main.body {
     padding: 8px;
 }
-#main .body td {
-    background-color: #f0fffa;
-}
-#main .body th {
-    background-color: #e0ffe8;
-}
 #main h1 {
     background-color: #ffc0cb;
     padding: 4px;
@@ -124,4 +118,61 @@ div.showArea {
 }
 .showArea h2 {
     margin: 8px 0 4px 0;
+}
+
+
+/* table */
+table.book {
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 2px solid #d0e4d8;
+}
+table.book th {
+    background-color: #e0f4e8;
+    border: 1px solid #e0f4e8;
+    padding: 2px;
+    color: #607468;
+}
+table.book td {
+    background-color: #ffffff;
+    border: 1px solid #d0e4d8;
+    padding: 2px;
+}
+
+/* buttons */
+a.button {
+    display: block;
+    width: 100px;
+    margin: 4px;
+    background-color: #e0f4e8;
+    border: 1px solid #d0e4d8;
+    color: #002200;
+    text-decoration: none;
+    text-align: center;
+    padding: 2px;
+}
+ul.operationButtons li.button {
+    float:left;
+}
+ul.operationButtons, ul.listButtons {
+    list-style: none;
+}
+ul.listButtons li.button {
+    float: right;
+}
+ul.listButtons a.button {
+    font-size: 80%;
+    width: 70px;
+}
+div.listItem {
+    border-bottom: 1px solid #d0e4d8;
+    padding: 4px;
+}
+div.listItem div.listTitle {
+    font-size: 110%;
+}
+.code {
+    color: #558855;
+    font-size: 90%;
+    font-weight: bold;
 }

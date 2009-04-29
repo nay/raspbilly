@@ -1,1 +1,1 @@
-USE_DHTML_X_GRID = true
+USE_DHTML_X_GRID = false

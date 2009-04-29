@@ -1,0 +1,15 @@
+<div class="listItem">
+  <div class="listTitle" style="width:40%; float:left;"><%= bill.subject.blank? ? "件名なし" : h(bill.subject) %></div>
+  <div class="listTitle" style="width:40%; float:left;"><%= h bill.customer_name %></div>
+  <div class="timestamp" style="width:20%; float:left;"><%= bill.updated_at.to_formatted_s(:db) %></div>
+  <div style="clear:left;"></div>
+  <div class="code"><%= h bill.code %></div>
+<ul class="listButtons">
+  <li class="button"><%= link_to "詳しくみる", bill_path(bill),:method => :get, :class=> "button" %></li>
+  <li class="button"><%= link_to "編集する", edit_bill_path(bill), :method => :get, :class => "button" %></li>
+  <li class="button"><%= link_to "削除", bill_path(bill), :method => :delete, :confirm => "#{h format_bill(bill)}への請求書を削除します。よろしいですか？", :class => "button"%></li>
+  <li>総額：<%= bill.total_amount %></li>
+  <li>請求日：<%= bill.written_on ? bill.written_on.to_formatted_s(:db) : "未記入" %></li>
+</ul>
+
+</div>
