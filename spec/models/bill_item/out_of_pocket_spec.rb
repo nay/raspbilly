@@ -21,5 +21,13 @@ describe BillItem::OutOfPocket do
       i.taxed = true
       lambda{i.save}.should raise_error(RuntimeError)
     end
+    it "formatted_amount に,付きの数字を渡しても正しくamountに登録される" do
+      i = BillItem::OutOfPocket.new(:formatted_amount => "40,000")
+      i.save!
+      i.formatted_amount.should == "40,000"
+      i.amount.should == 40000
+    end
   end
+
+
 end

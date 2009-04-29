@@ -31,7 +31,7 @@ class BillsController < ApplicationController
 
     if @bill.save
       flash[:notice] = "#{format_bill(@bill)}を登録しました。"
-      redirect_to bills_path
+      redirect_to bill_path(:id => @bill.id)
     else
       add_default_sale_items
       add_default_out_of_pocket_items
@@ -42,7 +42,7 @@ class BillsController < ApplicationController
   def update
     if @bill.update_attributes(params[:bill])
       flash[:notice] = "#{format_bill(@bill)}は正常に更新されました"
-      redirect_to bills_path
+      redirect_to bill_path(:id => @bill.id)
     else
       render :action => 'edit'
     end

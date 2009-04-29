@@ -1,0 +1,11 @@
+<tr>
+  <td class="itemName">
+    <%= sale_item.name %>
+    <% unless sale_item.description.blank? %>
+      <div class="description"><%= h sale_item.description %></div>
+    <% end %>
+  </td>
+  <td class="quantity"><%= sale_item.quantity %></td>
+  <td class="amount"><%= number_with_delimiter(sale_item.unit_price) %></td>
+  <td class="amount"><%= number_with_delimiter(sale_item.amount) %></td>
+</tr>

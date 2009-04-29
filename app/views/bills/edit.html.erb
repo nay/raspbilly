@@ -4,5 +4,7 @@
 <%= render :partial => "form" %>
 </div>
 
-  <%= link_to "更新しないで表示", @bill %>
-  <%= link_to "一覧に戻る", bills_path,:method => :get %>
+<ul class="operationButtons">
+  <li class="button"><%= link_to "詳細へ", @bill, :class=>"button" %></li>
+  <li class="button"><%= link_to "一覧へ", bills_path,:method => :get, :class=>"button" %></li>
+</ul>

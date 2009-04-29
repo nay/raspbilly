@@ -1,53 +1,32 @@
-<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
+<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID -%>
 <link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid.css"> 
 <link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid_skins.css">
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxcommon.js" %>
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxgrid.js" %>
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxgridcell.js" %>
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/excells/dhtmlxgrid_excell_link.js" %>
-<% end %>
+<% end -%>
 
-  <% unless flash[:notice].blank? %>
+<% unless flash[:notice].blank? -%>
   <div><%= flash[:notice] %></div>
-<% end %>
-<% if @bills.empty? %>
+<% end -%>
+<% if @bills.empty? -%>
   <p>表示できる請求書はありません。</p>
-<% else %>
+<% else -%>
   <p><%= @bills.total_entries %>件の請求書があります。</p>
   <%= will_paginate @bills %>
   <% unless defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID -%>
-  <table>
-    <tr>
-      <th>コード</th>
-      <th>顧客名</th>
-      <th>件名</th>
-      <th>請求日</th>
-      <th>請求金額</th>
-      <th>更新日時</th>
-      <th></th>
-      <th></th>
-    <th></th>
-    </tr>
-    <% for bill in @bills -%>
-      <tr>
-        <td><%= h bill.code %></td>
-        <td><%= h bill.customer_name %></td>
-        <td><%= h bill.subject %></td>
-        <td><%= bill.written_on.to_formatted_s(:db) if bill.written_on %></td>
-        <td><%= bill.total_amount %></td>
-        <td class="timestamp"><%= bill.updated_at.to_formatted_s(:db) %></td>
-        <td><%= link_to "詳しくみる", bill_path(bill),:method => :get %></td>
-        <td><%= link_to "編集する", edit_bill_path(bill), :method => :get %></td>
-        <td><%= link_to "削除", bill_path(bill), :method => :delete, :confirm => "#{h format_bill(bill)}への請求書を削除します。よろしいですか？"%></td>
-      </tr>
-    <% end -%>
-  </table>
+  
+  <%= render :partial => "bill", :collection => @bills %>
+  
   <% else -%>
+  
   <div id="gridbox" width="700px" height="400px" style="background-color:white;"></div>
-  <% end %>
+  
+  <% end -%>
   <%= will_paginate @bills %>
-<% end %>
-<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
+<% end -%>
+<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID -%>
 <script type="text/javascript">
   grid = new dhtmlXGridObject('gridbox');
   grid.selMultiRows = false;
@@ -56,4 +35,4 @@
   grid.init();
   grid.loadXML('<%=url_for params.update(:action => :dhtmlxgrid, :format => :xml) %>');
 </script>
-<% end %>
+<% end -%>

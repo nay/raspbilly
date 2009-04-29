@@ -1,0 +1,12 @@
+<tr>
+  <td class="itemName">
+    [立替]
+    <%= out_of_pocket_item.name %>
+    <% unless out_of_pocket_item.description.blank? %>
+      <div class="description"><%= h out_of_pocket_item.description %></div>
+    <% end %>
+  </td>
+  <td class="quantity"></td>
+  <td class="amount"></td>
+  <td class="amount"><%= number_with_delimiter(out_of_pocket_item.amount) %></td>
+</tr>

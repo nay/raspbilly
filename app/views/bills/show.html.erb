@@ -1,18 +1,16 @@
 <h1><%= format_bill(@bill)%>の詳細</h1>
 
 <div class="showArea">
+  <div style="text-align:right;">
+    <div><%= with_lack_attension(@bill.code, "コード未入力") %></div>
+    <div><%= with_lack_attension(@bill.written_on, "請求日未入力") %></div>
+  </div>
+  <div style="font-size:120%;"><%=h @bill.customer_name %></div>
+  <div style="font-size:120%;"><%= with_lack_attension(@bill.subject, "件名なし") %></div>
+
+
 <div>
   <h2>概要情報</h2>
-  <div>
-    <div class="inlineField">コード: <%=h @bill.code %></div>
-    <div class="inlineField">請求日: <%=h @bill.written_on %></div>
-    <div class="clearInlineField"></div>
-  </div>
-  <div>
-    <div class="inlineField">顧客名: <%=h @bill.customer_name %></div>
-    <div class="inlineField">件名: <%=h @bill.subject %></div>
-    <div class="clearInlineField"></div>
-  </div>
   <div>
     <div class="inlineField">支払条件: <%=h @bill.payment_condition %></div>
     <div class="inlineField">支払期限: <%=h @bill.payment_due_date %></div>
@@ -27,45 +25,37 @@
 </div>
 
 <div>
-  <h2>販売の明細</h2>
   <% unless @bill.sale_items.empty? %>
-  <table>
+  <table class="book">
     <tr>
-      <th>摘要</th><th>金額</th><th>備考</th>
+      <th>摘要</th><th>数量</th><th>単価</th><th>金額</th>
     </tr>
-    <% @bill.sale_items.each do |i| %>
-      <tr>
-        <td class="itemName"><%= i.name %></td>
-        <td class="amount"><%= number_with_delimiter(i.amount) %></td>
-        <td class="itemDescription"><%= i.description %></td>
-      </tr>
+    <%= render :partial => "sale_item", :collection => @bill.sale_items %>
+    <tr class="summary">
+      <td class="headline">小計</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_sales_amount %></td>
+    </tr>
+    <tr class="summary">
+      <td class="headline">消費税額</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_sales_tax %></td>
+    </tr>
+    <% unless @bill.out_of_pocket_items.empty? %>
+    <%= render :partial => "out_of_pocket_item", :collection => @bill.out_of_pocket_items %>
+    <tr class="summary">
+      <td class="headline">立替経費 計</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_out_of_pocket_amount %></td>
+    </tr>
     <% end %>
+    <tr class="summary">
+      <td class="headline">合計</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_amount %></td>
+    </tr>
   </table>
   <% end %>
 </div>
 
-<div>
-  <% unless @bill.out_of_pocket_items.empty? %>
-  <h2>立替金の明細</h2>
-  <table>
-    <tr>
-      <th>摘要</th><th>金額</th><th>備考</th>
-    </tr>
-    <% @bill.out_of_pocket_items.each do |i| %>
-      <tr>
-        <td class="itemName"><%= i.name %></td>
-        <td class="amount"><%= number_with_delimiter i.amount %></td>
-        <td class="itemDescription"><%= i.description %></td>
-      </tr>
-    <% end %>
-  </table>
-  <% end %>
+
+<div class="operation">
+  <ul class="operationButtons">
+    <li class="button"><%= link_to "編集する", edit_bill_path(@bill), :class => "button" %></li>
+    <li class="button"><%= link_to "一覧に戻る", bills_path, :class => "button" %></li>
+  </ul>
 </div>
 
-<div>請求金額: TODO </div>
-<div>内、消費税額: TODO </div>
-
-
-<%= link_to "編集する", bill_path(@bill), :method => :put %>
-<%= link_to "一覧に戻る", bills_path,:method => :get %>
 </div>

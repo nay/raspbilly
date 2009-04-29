@@ -28,8 +28,10 @@
       <div>
         <%= i.label :name, '摘要' %>
         <%= i.text_field :name %>
-        <%= i.label :formatted_amount, '金額' %>
-        <%= i.text_field :formatted_amount, :size => 10, :class => "amountField" %>
+        <%= i.label :formatted_unit_price, '単価' %>
+        <%= i.text_field :formatted_unit_price, :size => 10, :class => "amountField" %>
+        <%= i.label :quantity, '数量' %>
+        <%= i.text_field :quantity, :size => 2, :class => "amountField" %>
         <%= i.label :description, '備考' %>
         <%= i.text_field :description %>
       </div>
