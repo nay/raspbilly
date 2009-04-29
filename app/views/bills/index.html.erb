@@ -1,37 +1,38 @@
-<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
+<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID -%>
 <link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid.css"> 
 <link rel="STYLESHEET" type="text/css" href="components/dhtmlGrid/codebase/dhtmlxgrid_skins.css">
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxcommon.js" %>
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxgrid.js" %>
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/dhtmlxgridcell.js" %>
 <%= javascript_include_tag "/components/dhtmlGrid/codebase/excells/dhtmlxgrid_excell_link.js" %>
-<% end %>
+<% end -%>
 
-  <% unless flash[:notice].blank? %>
+<% unless flash[:notice].blank? -%>
   <div><%= flash[:notice] %></div>
-<% end %>
-<% if @bills.empty? %>
+<% end -%>
+<% if @bills.empty? -%>
   <p>表示できる請求書はありません。</p>
-<% else %>
+<% else -%>
   <p><%= @bills.total_entries %>件の請求書があります。</p>
   <%= will_paginate @bills %>
   <% unless defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID -%>
   
   <%= render :partial => "bill", :collection => @bills %>
-
-  <% end -%>
-  <% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
+  
+  <% else -%>
+  
   <div id="gridbox" width="700px" height="400px" style="background-color:white;"></div>
-  <% end %>
+  
+  <% end -%>
   <%= will_paginate @bills %>
-<% end %>
-<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
+<% end -%>
+<% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID -%>
 <script type="text/javascript">
-	grid = new dhtmlXGridObject('gridbox');
-	grid.selMultiRows = false;
-	grid.setImagePath("/components/dhtmlGrid/codebase/imgs/");
-	grid.setMultiLine(false);
-	grid.init();
-	grid.loadXML('<%=url_for params.update(:format => :xml) %>');
+  grid = new dhtmlXGridObject('gridbox');
+  grid.selMultiRows = false;
+  grid.setImagePath("/components/dhtmlGrid/codebase/imgs/");
+  grid.setMultiLine(false);
+  grid.init();
+  grid.loadXML('<%=url_for params.update(:action => :dhtmlxgrid, :format => :xml) %>');
 </script>
-<% end %>
+<% end -%>

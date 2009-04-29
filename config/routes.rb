@@ -38,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   map.bill_sale_items "bills/:id/sale_items", :controller => "bills", :action => "add_sale_item_field"
   map.new_bill_out_of_pocket_items "bills/new/out_of_pocket_items", :controller => "bills", :action => "add_out_of_pocket_item_field"
   map.bill_out_of_pocket_items "bills/:id/out_of_pocket_items", :controller => "bills", :action => "add_out_of_pocket_item_field"
+  map.bills_dhtmlxgrid "bills/dhtmlxgrid.:format", :controller => "bills", :action => "dhtmlxgrid"
   map.resources :bills
   map.resources :senders
   
