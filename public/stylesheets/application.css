@@ -184,3 +184,12 @@ div.listItem div.listTitle {
     font-size: 90%;
     font-weight: bold;
 }
+td.headline {
+    font-weight: bold;
+}
+.sum {
+    font-weight: bold;
+}
+tr.summary td, tr.summary th {
+    background-color: #f2fff6;
+}

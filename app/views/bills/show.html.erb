@@ -27,42 +27,27 @@
 </div>
 
 <div>
-  <h2>販売の明細</h2>
   <% unless @bill.sale_items.empty? %>
   <table class="book">
     <tr>
       <th>摘要</th><th>数量</th><th>単価</th><th>金額</th>
     </tr>
     <%= render :partial => "sale_item", :collection => @bill.sale_items %>
-    <tr>
-      <td></td>
-      <td></td>
-      <th>請求金額</th><td class="amount"><%= number_with_delimiter @bill.total_amount %></td>
+    <tr class="summary">
+      <td class="headline">小計</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_sales_amount %></td>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <th>内、消費税額</th><td class="amount"></td></td>
+    <tr class="summary">
+      <td class="headline">消費税額</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_sales_tax %></td>
     </tr>
-  </table>
-  <% end %>
-</div>
-
-
-<div>
-  <% unless @bill.out_of_pocket_items.empty? %>
-  <h2>立替金の明細</h2>
-  <table class="book">
-    <tr>
-      <th>摘要</th><th>金額</th><th>備考</th>
+    <% unless @bill.out_of_pocket_items.empty? %>
+    <%= render :partial => "out_of_pocket_item", :collection => @bill.out_of_pocket_items %>
+    <tr class="summary">
+      <td class="headline">立替経費 計</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_out_of_pocket_amount %></td>
     </tr>
-    <% @bill.out_of_pocket_items.each do |i| %>
-      <tr>
-        <td class="itemName"><%= i.name %></td>
-        <td class="amount"><%= number_with_delimiter i.amount %></td>
-        <td class="itemDescription"><%= i.description %></td>
-      </tr>
     <% end %>
+    <tr class="summary">
+      <td class="headline">合計</td><td></td><td></td><td class="amount sum"><%= number_with_delimiter @bill.total_amount %></td>
+    </tr>
   </table>
   <% end %>
 </div>

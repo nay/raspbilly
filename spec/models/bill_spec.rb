@@ -7,8 +7,8 @@ describe Bill do
       b.total_amount.should be_nil
     end
     it "taxは一括で設定できない" do
-      b = Bill.new(:tax => 105)
-      b.tax.should be_nil
+      b = Bill.new(:total_sales_tax => 105)
+      b.total_sales_tax.should be_nil
     end
   end
   describe "validate" do
@@ -29,14 +29,15 @@ describe Bill do
       it "売上２件の合計が正しいこと" do
         @bill.save!
         @bill.sale_items.each{|i| p i.inspect }
-        @bill.total_amount.should == 3120
-        @bill.tax.should == 156
+        @bill.total_sales_amount.should == 3120
+        @bill.total_sales_tax.should == 156
       end
       it "立替が合計され、税金には反映されないこと" do
         @bill.out_of_pocket_items.build(:name => "oop1", :formatted_amount => "5,000")
         @bill.save!
-        @bill.total_amount.should == 8120
-        @bill.tax.should == 156
+        @bill.total_sales_amount.should == 3120
+        @bill.total_out_of_pocket_amount.should == 5000
+        @bill.total_sales_tax.should == 156
       end
     end
   end
