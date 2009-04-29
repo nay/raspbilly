@@ -193,3 +193,6 @@ td.headline {
 tr.summary td, tr.summary th {
     background-color: #f2fff6;
 }
+.lackAttension {
+    color: #ff0000;
+}
