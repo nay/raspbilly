@@ -43,7 +43,7 @@ module DHtmlXGrid
       columns.map do |c|
         h = {}
         c.each do |k, v|
-          h[k.to_s] = v
+          h[k.to_s] = v.to_s
         end
         h
       end
