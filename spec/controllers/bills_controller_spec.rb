@@ -32,7 +32,7 @@ describe BillsController do
   describe "PUT 'update'" do
     it "成功する" do
       post 'update', :id => @bill.id, :_method => "put", :bill => {:customer_name => "changed"}
-      response.should redirect_to(bills_path)
+      response.should redirect_to(bill_path(:id => @bill.id))
       @bill.reload
       @bill.customer_name.should == "changed"
     end

@@ -24,10 +24,11 @@ describe Bill do
   describe "save" do
     describe "before_save update_total_amount_and_tax" do
       before do
-        @bill = Bill.new(:customer_name => "test", :sale_items_attributes => [{:name => "item1", :formatted_amount => "120"}, {:name => "item2", :formatted_amount => "3,000"}])
+        @bill = Bill.new(:customer_name => "test", :sale_items_attributes => [{:name => "item1", :formatted_unit_price => "120", :quantity => "1"}, {:name => "item2", :formatted_unit_price => "3,000", :quantity => "1"}])
       end
       it "売上２件の合計が正しいこと" do
         @bill.save!
+        @bill.sale_items.each{|i| p i.inspect }
         @bill.total_amount.should == 3120
         @bill.tax.should == 156
       end

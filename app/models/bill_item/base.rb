@@ -3,7 +3,7 @@ class BillItem::Base < ActiveRecord::Base
   belongs_to :bill
 
   attr_protected :bill_id, :parent_id, :amount
-  attr_accessor :formatted_amount, :set_formatted_amount
+  attr_accessor :formatted_amount
 
   before_save :avoid_saving_abstract, :set_amount
   after_save :set_formatted_amount, :save_bill
@@ -24,6 +24,6 @@ class BillItem::Base < ActiveRecord::Base
     self.formatted_amount = amount ? ((amount.to_s =~ /[-+]?\d{4,}/) ? (amount.to_s.reverse.gsub(/\G((?:\d+\.)?\d{3})(?=\d)/, '\1,').reverse) : amount.to_s) : nil
   end
   def save_bill
-    bill.save! if bill # to update total_amount
+#    bill.calculate_total! if bill # to update total_amount
   end
 end

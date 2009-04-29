@@ -104,10 +104,18 @@ input.amountField {
 }
 /* show */
 td.itemName {
-    width: 100px;
+    width: 300px;
+}
+.itemName .description {
+    padding-left: 10px;
+    font-size: 80%;
 }
 td.amount {
-    width: 100px;
+    width: 140px;
+    text-align: right;
+}
+td.quantity {
+    width: 40px;
     text-align: right;
 }
 td.itemDescription {

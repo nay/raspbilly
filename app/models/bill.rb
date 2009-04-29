@@ -9,10 +9,9 @@ class Bill < ActiveRecord::Base
 
   accepts_nested_attributes_for :sale_items, :out_of_pocket_items, :allow_destroy => true, :reject_if => proc {|attributes| attributes['name'].blank? && attributes['amount'].blank? && attributes['description'].blank? }
 
-  after_save :update_total_amount_and_tax
+  after_save :update_total_and_tax
 
-  private
-  def update_total_amount_and_tax
+  def update_total_and_tax
     sum = 0
     taxed_sum = 0
     sale_items.each{|i|
@@ -27,6 +26,7 @@ class Bill < ActiveRecord::Base
     }
     self.tax = (taxed_sum * 1.05).ceil - taxed_sum # TODO: 計算方式の登録
     self.total_amount = sum
+    self.class.update_all("tax = #{tax}, total_amount = #{total_amount}", "id = #{self.id}")
   end
 
 end
