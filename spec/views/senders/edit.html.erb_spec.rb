@@ -5,8 +5,7 @@ describe "/senders/edit" do
     render 'senders/edit'
   end
   
-  #Delete this example and add some real ones or delete this file
-  it "should tell you where to find the file" do
-    response.should have_tag('p', %r[Find me in app/views/senders/edit])
-  end
+#  it "成功する" do
+#    response.should be_success
+#  end
 end
