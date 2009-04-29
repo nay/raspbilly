@@ -26,7 +26,7 @@
       <th>更新日時</th>
       <th></th>
       <th></th>
-	  <th></th>
+    <th></th>
     </tr>
     <% for bill in @bills -%>
       <tr>
@@ -42,19 +42,18 @@
       </tr>
     <% end -%>
   </table>
-  <% end -%>
-  <% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
+  <% else -%>
   <div id="gridbox" width="700px" height="400px" style="background-color:white;"></div>
   <% end %>
   <%= will_paginate @bills %>
 <% end %>
 <% if defined?(USE_DHTML_X_GRID) && USE_DHTML_X_GRID %>
 <script type="text/javascript">
-	grid = new dhtmlXGridObject('gridbox');
-	grid.selMultiRows = false;
-	grid.setImagePath("/components/dhtmlGrid/codebase/imgs/");
-	grid.setMultiLine(false);
-	grid.init();
-	grid.loadXML('<%=url_for params.update(:format => :xml) %>');
+  grid = new dhtmlXGridObject('gridbox');
+  grid.selMultiRows = false;
+  grid.setImagePath("/components/dhtmlGrid/codebase/imgs/");
+  grid.setMultiLine(false);
+  grid.init();
+  grid.loadXML('<%=url_for params.update(:action => :dhtmlxgrid, :format => :xml) %>');
 </script>
 <% end %>
