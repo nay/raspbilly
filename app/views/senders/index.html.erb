@@ -1,0 +1,4 @@
+<%= link_to "新規作成", new_sender_path, :class => "button" %>
+<table>
+  <%= render :partial => "sender", :collection => @senders %>
+</table>

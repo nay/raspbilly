@@ -1,0 +1,11 @@
+<% name_class = sender.default? ? "default" : "" %>
+<tr>
+  <td>
+  </td>
+  <td style="width: 32%;" class="large">
+  <span class="<%= name_class %>"><%= h sender.name %></span>
+  </td>
+  <td style="width: 48%;"><%= simple_format h(sender.address) %></td>
+  <td><%= link_to "変更", edit_sender_path(sender), :class => "littleButton" %></td>
+  <td><%= link_to "削除", sender_path(sender), :method => :delete, :confirm => "請求元「#{h sender.name}」を削除します。よろしいですか？", :class => "littleButton" %></td>
+</tr>

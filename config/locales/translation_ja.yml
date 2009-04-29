@@ -5,6 +5,7 @@ ja:
       bill_item/base: 明細
       bill_item/out_of_pocket: 立替明細
       bill_item/sale: 明細
+      sender: 請求元
     attributes:
       bill:
         code: コード
@@ -33,4 +34,6 @@ ja:
         name: 摘要
         taxed: 消費税の有無
         description: 備考
-
+      sender:
+        name: 名前
+        address: 住所

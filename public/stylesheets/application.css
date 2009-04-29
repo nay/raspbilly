@@ -159,6 +159,19 @@ a.button {
     text-align: center;
     padding: 2px;
 }
+a.littleButton {
+    display: block;
+    width: 70px;
+    margin: 4px;
+    background-color: #e0f4e8;
+    border: 1px solid #d0e4d8;
+    color: #002200;
+    text-decoration: none;
+    text-align: center;
+    padding: 2px;
+    font-size: 80%;
+}
+
 ul.operationButtons li.button {
     float:left;
 }
@@ -195,4 +208,10 @@ tr.summary td, tr.summary th {
 }
 .lackAttension {
     color: #ff0000;
+}
+.large {
+    font-size: 120%;
+}
+.default {
+    color: #ff6655;
 }

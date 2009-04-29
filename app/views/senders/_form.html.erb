@@ -1,0 +1,18 @@
+<%= error_messages_for :sender %>
+<% form_for @sender do |f| %>
+  <div>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :address, "住所" %>
+    <%= f.text_area :address, :rows => 3 %>
+  </div>
+  <div>
+    <%= f.label :is_default, "デフォルトにする" %>
+    <%= f.check_box :is_default %>
+  </div>
+  <div>
+    <%= f.submit @sender.new_record? ? "登録" : "更新"  %>
+  </div>
+<% end %>
